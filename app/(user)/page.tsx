@@ -14,6 +14,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setData(data.results);
+        console.log(data);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
