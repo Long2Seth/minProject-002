@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import ProductCardComponent from '@/component/ProductCardComponent';
 
 const ENDPOINT = process.env.NEXT_PUBLIC_API_URL;
-console.log("ENDPOINT ....", ENDPOINT);
 
 export default function Home() {
   const [getData, setData] = useState([]);
@@ -23,7 +22,7 @@ export default function Home() {
 
   return (
     <main className='grid md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center mx-10'>
-      {getData.map((product, index) => (
+      {getData.map((product : any , index) => (
         <ProductCardComponent
           key={index}
           name={product.name}
