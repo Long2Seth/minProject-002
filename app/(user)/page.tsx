@@ -3,32 +3,27 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ProductCardComponent from '@/component/ProductCardComponent';
 
-
-const ENDPOINT = "https://store.istad.co/api/products/";
+const ENDPOINT = process.env.NEXT_PUBLIC_API_URL;
+console.log("ENDPOINT ....", ENDPOINT);
 
 export default function Home() {
-
   const [getData, setData] = useState([]);
   const router = useRouter();
-
 
   useEffect(() => {
     fetch(`${ENDPOINT}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.results);
-
       })
-
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
   }, []);
 
-
   return (
-    <main className=' grid md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center mx-10 '>
-      {getData.map((product: any, index) => (
+    <main className='grid md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center mx-10'>
+      {getData.map((product, index) => (
         <ProductCardComponent
           key={index}
           name={product.name}
@@ -36,9 +31,7 @@ export default function Home() {
           price={product.price}
           onClick={() => router.push(`/product/${product.id}`)}
         />
-      ))
-      }
-
+      ))}
     </main>
   );
 }
