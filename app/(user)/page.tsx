@@ -29,7 +29,7 @@ export default function Home() {
           name={product.name}
           image={product.image}
           price={product.price}
-          onClick={() => router.push(`/product/${product.id}`)}
+          onClick={() => router.push(`/${product.id}`)}
         />
       ))}
     </main>

@@ -2,20 +2,25 @@ import React from 'react'
 import {Card} from 'flowbite-react'
 
 type PropsType = {
-    title : string ,
-    description : string
+    name : string ,
+    desc : string
     image : string
 }
 
-export default function CardDetailComponent({title, description, image} : PropsType) {
+export default function CardDetailComponent({name, desc, image} : PropsType) {
     return (
-        <Card className="max-w-sm" imgSrc={image} horizontal>
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {title}
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-                {description}
-            </p>
-        </Card>
+        <Card
+      className="max-w-sm"
+      imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
+      imgSrc={image}
+    >
+      <a href="#">
+        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
+        </h5>
+      </a>
+    
+
+    </Card>
     );
 }
