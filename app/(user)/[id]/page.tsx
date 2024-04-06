@@ -1,29 +1,30 @@
 import CardDetailComponent from "@/component/CardDetailComponent";
+import { BASE_URL } from "@/lib/constants";
 import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
     params: {
-        id: string
+        id: number
     };
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
-const ENDPOINT = process.env.NEXT_PUBLIC_API_URL;
-
-const getData = async (id: string) => {
-    const res = await fetch(`${ENDPOINT}${id}`);
+const getData = async (id: number) => {
+    const res = await fetch(`${BASE_URL}/api/products/${id}`);
+    console.log(res);
     const data = await res.json();
     console.log(data);
     return data;
 };
 
-export async function generateMetadata({ params, searchParams}:Props,parent: ResolvingMetadata
+export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata
 ): Promise<Metadata> {
     // read route params
     const id = params.id;
 
 
-    const product = await fetch(`${ENDPOINT}${id}`).then((res) => res.json());
+    const product = await fetch(`${BASE_URL}/api/products/${id}`)
+    .then((res) => res.json());
 
 
 
@@ -37,13 +38,14 @@ export async function generateMetadata({ params, searchParams}:Props,parent: Res
 }
 
 export default async function Detail(props: Props) {
-    let data = await getData(props.params.id);
+    const data = await getData(props.params.id);
 
     return (
         <div className="">
             <CardDetailComponent
                 name={data?.name || "NoTitle"}
                 desc={data?.desc || "No Description"}
+                price={data?.price || 0}
                 image={
                     data?.image ||
                     "https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1"
