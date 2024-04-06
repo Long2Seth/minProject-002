@@ -19,14 +19,13 @@ function NavbarComponent() {
       <Navbar.Collapse>
 
 
-        {
-          myArray.map(
-            (item, index) => (
-              <Navbar.Link className=" text-lg font-semibold" key={index} href={item.path} active={item.path == path}>
-                {item.title}
-              </Navbar.Link>
-            )
+        {myArray.map(
+          (item, index) => (
+            <Navbar.Link className=" text-lg font-semibold" key={index} href={item.path} active={item.path == path}>
+              {item.title}
+            </Navbar.Link>
           )
+        )
         }
 
       </Navbar.Collapse>

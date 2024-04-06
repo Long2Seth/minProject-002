@@ -24,19 +24,25 @@ export default function Home() {
 
   return (
     <main className=' w-full '>
-      <HeroComponent/>
-      <section className='grid md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center mx-10'>
-      {getData.map((product: any, index) => (
-        <ProductCardComponent
-          key={index}
-          name={product.name}
-          image={product.image}
-          price={product.price}
-          onClick={() => router.push(`/${product.id}`)}
-        />
-      ))}
+      <HeroComponent />
+      <section className=' my-10'>
+        <h1 style={{fontSize: '30px'}} className=' mx-10 font-bold'>Pupular Products</h1>
+        <section className='grid md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center mx-10  my-5 '>
+
+          {getData.map((product: any, index) => (
+            <ProductCardComponent
+              key={index}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+              onClick={() => router.push(`/${product.id}`)}
+            />
+          ))}
+        </section>
       </section>
-      
+
+
+
     </main>
   );
 }
