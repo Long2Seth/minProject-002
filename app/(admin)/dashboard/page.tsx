@@ -3,7 +3,7 @@ import { ProductType } from "@/lib/definition";
 import React from 'react';
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
-import { Button, Modal } from "flowbite-react";
+import { Modal } from "flowbite-react";
 import Image from "next/image";
 import { customStyles } from "@/lib/costomStyles";
 import { useRouter } from "next/navigation";

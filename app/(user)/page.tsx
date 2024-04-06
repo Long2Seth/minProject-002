@@ -13,7 +13,12 @@ export default function Home() {
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/products/`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
       .then((data) => {
         setData(data.results);
       })

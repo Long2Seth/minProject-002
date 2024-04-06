@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     url: "https://www.istad.co/",
     title: "Center of Science and Technology Advanced Development",
     description: "NEXT-ORA is a noteworthy science and technology center in Cambodia. NEXT-ORA has routed Cambodian students to advanced science and technology, research, and develop digital skills and our graduates have been guaranteed excellent job opportunities with the Top IT company.",
-    images: 'https://www.istad.co/resources/img/istad-thumbnail.png'
+    images: [
+      {
+        url: 'https://www.istad.co/resources/img/istad-thumbnail.png',
+        alt: 'ISTAD Thumbnail',
+      },
+    ],
   },
 };
 

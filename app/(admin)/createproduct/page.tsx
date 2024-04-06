@@ -1,13 +1,9 @@
-"use client";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { useRouter } from "next/navigation";
-import style from "./style.module.css";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { BASE_URL, ACCESS_TOKEN } from "@/lib/constants";
-
-
-
+import style from "./style.module.css";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 type CatageoryType = {
 	name: string;
