@@ -88,7 +88,7 @@ export default function Product() {
 		formData.append("name", name);
 		formData.append("image", file);
 
-		const rest = await fetch(`${BASE_URL}/api/file/${typeFile}/`, {
+		const rest = await fetch(`${process.env.BASE_URL}/api/file/${typeFile}/`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${ACCESS_TOKEN}`,
