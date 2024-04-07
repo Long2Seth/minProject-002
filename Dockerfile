@@ -6,14 +6,11 @@ RUN apk add --no-cache libc6-compat
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package.json package-lock.json ./
-
 # Copy all other project files to working directory
 COPY . .
+RUN npm cache clean --force
 
-# if use Image
-RUN npm i sharp
+RUN npm i 
 
 # Run the next build process and generate the artifacts
 RUN npm run build
