@@ -1,8 +1,8 @@
 version: '3'
 services:
-  piseth:
-    image: docker_piseth:latest
-    container_name: piseth
+  ecommerce_by_piseth:
+    #	  image: naemyouimages
+    container_name: ecommerce_by_piseth
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,7 +14,6 @@ services:
       - GENERATE_SOURCEMAP=false
     networks:
       - data_analytics
-      
 networks:
   data_analytics:
     external: true
