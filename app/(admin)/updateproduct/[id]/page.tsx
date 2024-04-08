@@ -13,7 +13,7 @@ type PropsType = {
 const BEST_URL = "https://store.istad.co"
 
 const getData = async (id: number) => {
-    const response = await fetch(`${BEST_URL}/api/products/${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`);
     const data = await response.json();
     return data;
 }
