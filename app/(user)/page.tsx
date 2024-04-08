@@ -1,18 +1,20 @@
 'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ProductCardComponent from '@/component/ProductCardComponent';
 import HeroComponent from '@/component/HeroComponent';
 import { BASE_URL } from '@/lib/constants';
-
-
+import PaginationComponent from '@/component/PaginationComponent';
 
 export default function Home() {
   const [getData, setData] = useState([]);
+  const [totalProduct, setTotalProduct] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/products/`)
+    fetch(`${BASE_URL}/api/products/?page=${currentPage}&page_size=10`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -21,11 +23,16 @@ export default function Home() {
       })
       .then((data) => {
         setData(data.results);
+        setTotalProduct(data.total);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page:number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <main className=' w-full '>
@@ -45,9 +52,7 @@ export default function Home() {
           ))}
         </section>
       </section>
-
-
-
+      <PaginationComponent totalPage={Math.ceil(totalProduct / 10)} onPageChange={handlePageChange} />
     </main>
   );
 }

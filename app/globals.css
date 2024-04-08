@@ -2,8 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .non-scroll-bar::-webkit-scrollbar {
   display: none;
+}
+
+.footer-con {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.footer-con img {
+  width: 100px;
+}
+
+.footer-con p {
+  max-width: 300px;
+}
+
+.detail-con ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.footer-con li {
+  list-style: none;
+}
+
+.footer-con .text-gray-900 {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-con {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-con {
+    grid-template-columns: 1fr;
+  }
 }

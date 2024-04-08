@@ -1,51 +1,47 @@
+'use client';
 import { useState } from "react";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
 
-function PaginationComponent() {
+type PropsType = {
+  totalPage: number;
+  onPageChange: (page: number) => void;
+};
+
+function PaginationComponent({ totalPage, onPageChange }: PropsType) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // const onPageChange = (page) => setCurrentPage(page);
+  const handlePageChange = (page:number) => {
+    setCurrentPage(page);
+    onPageChange(page);
+  };
 
   return (
     <div className="flex justify-center items-center gap-1">
       <a
-        href="#"
-        className="inline-flex items-center justify-center w-8 h-8 rounded border border-gray-200 bg-white text-gray-900"
+      
+        onClick={() => handlePageChange(currentPage - 1)}
+        className={`inline-flex items-center justify-center w-8 h-8 rounded border border-gray-200 bg-white text-gray-900 ${currentPage === 1 && 'cursor-not-allowed'}`}
       >
         <BiSkipPrevious />
       </a>
 
-      <a
-        href="#"
-        className="block w-8 h-8 rounded border border-gray-200 bg-white text-center leading-8 text-gray-900"
-      >
-        1
-      </a>
+      {Array.from({ length: totalPage }, (_, i) => (
+        <a
+          key={i}
+          
+          onClick={() => handlePageChange(i + 1)}
+          className={`block w-8 h-8 rounded border ${currentPage === i + 1 ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-200 bg-white text-gray-900'} text-center leading-8`}
+        >
+          {i + 1}
+        </a>
+      ))}
+
+      
 
       <a
-        href="#"
-        className="block w-8 h-8 rounded border border-blue-600 bg-blue-600 text-center leading-8 text-white"
-      >
-        2
-      </a>
-
-      <a
-        href="#"
-        className="block w-8 h-8 rounded border border-gray-200 bg-white text-center leading-8 text-gray-900"
-      >
-        3
-      </a>
-
-      <a
-        href="#"
-        className="block w-8 h-8 rounded border border-gray-200 bg-white text-center leading-8 text-gray-900"
-      >
-        4
-      </a>
-
-      <a
-        href="#"
-        className="inline-flex items-center justify-center w-8 h-8 rounded border border-gray-200 bg-white text-gray-900"
+        
+        onClick={() => handlePageChange(currentPage + 1)}
+        className={`inline-flex items-center justify-center w-8 h-8 rounded border border-gray-200 bg-white text-gray-900 ${currentPage === totalPage && 'cursor-not-allowed'}`}
       >
         <BiSkipNext />
       </a>

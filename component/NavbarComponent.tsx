@@ -5,11 +5,13 @@ import Link from "next/link";
 import { Navbar } from "flowbite-react";
 import myArray from "@/lib/pathNavbar";
 import { usePathname } from "next/navigation";
-
+import { Button } from "flowbite-react";
+import { useRouter } from "next/navigation";
 
 
 function NavbarComponent() {
   const path = usePathname();
+  const router = useRouter();
   return (
     <Navbar fluid rounded>
       <Navbar.Brand as={Link} href="/">
@@ -27,6 +29,9 @@ function NavbarComponent() {
           )
         )
         }
+        <Button onClick={() => router.push('/dashboard')} gradientDuoTone="cyanToBlue">
+          Dashboard
+        </Button>
 
       </Navbar.Collapse>
     </Navbar>

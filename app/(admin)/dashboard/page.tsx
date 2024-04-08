@@ -115,7 +115,7 @@ export default function Dashboard() {
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Product Detial</Modal.Header>
         <Modal.Body>
-          <div className="space-y-6">
+          <div className="space-y-2">
             <Image
               src={productDetail?.image || imagePlaceholder}
               alt={productDetail?.name || "Untitle"}

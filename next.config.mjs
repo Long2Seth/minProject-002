@@ -5,7 +5,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['hips.hearstapps.com', 'i.pinimg.com', 'fakestoreapi.com', 'images.unsplash.com'],
+    domains: ['hips.hearstapps.com', 'i.pinimg.com', 'fakestoreapi.com', 'images.unsplash.com','i.imgur.com'],
     remotePatterns: [
       
       {
